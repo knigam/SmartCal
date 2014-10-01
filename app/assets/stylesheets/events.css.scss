@@ -1,0 +1,37 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+table {
+  width: 100%;
+}
+
+.day {
+  width: 14.3%;
+  height: 100px;
+}
+
+.today {
+  background-color: #b0c4de;
+}
+
+.prev-month {
+  background-color: #BDBDBD;
+}
+
+.next-month {
+  background-color: #BDBDBD;
+}
+
+.calendar-header {
+  font-weight: bold;
+  font-size: 20px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.day-hour {
+  border-top: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  min-height: 40px;
+  padding: 4px;
+}
