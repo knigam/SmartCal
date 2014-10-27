@@ -37,7 +37,8 @@ gem 'spring',        group: :development
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-gem "simple_calendar", "~> 1.1.0"
+gem 'fullcalendar-rails'
 gem "therubyracer"
 gem "less-rails"
 gem "twitter-bootstrap-rails"
+gem 'jquery-ui-themes'

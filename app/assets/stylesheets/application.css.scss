@@ -12,5 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
+ *= require jquery-ui/smoothness
  */
-.calendar td { height: 100px; width: 14.28%; }
+body { padding-top: 30px; }
