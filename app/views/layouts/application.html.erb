@@ -11,11 +11,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<div class="container-fluid">
-        <div class="row">
+    <%= nav_bar :inverse => true, :fixed => :top, :responsive => true, :brand => "Smart Cal" do  %>
+        <ul class="nav navbar-nav">
+            <li><%= link_to "Week View", week_events_url %></li>
+            <li><%= link_to "Month View", month_events_url %></li>
+        </ul>
+    <% end %>
+    <div class="container-fluid">
+        <div class="row" style="padding-top: 60px">
                 <div class="span12"><%= yield %></div>
         </div>
-</div>
+    </div>
 
 </body>
 </html>

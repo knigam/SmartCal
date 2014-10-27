@@ -7,6 +7,19 @@ class EventsController < ApplicationController
     @events = Event.all
   end
 
+  # GET /events/week
+  # GET /events/week.json
+  def week
+    @events = Event.all
+  end
+
+
+  # GET /events/month
+  # GET /events/month.json
+  def month
+    @events = Event.all
+  end
+
   # GET /events/1
   # GET /events/1.json
   def show

@@ -1,0 +1,17 @@
+<%- model_class = Event -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<%= month_calendar table: {class: "table table-bordered"}, header: {class: "calendar-header"}, tr: {class: "calendar-row"}, day_names: "date.day_names", events: @events do |date, events| %>
+    <strong><%= date.day %></strong>
+
+  <% events.each do |event| %>
+    <div>
+      <%= link_to event.name, event_path(event) %>
+    </div>
+  <% end %>
+<% end %>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_event_path,
+            :class => 'btn btn-primary' %>
