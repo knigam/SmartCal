@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
+    belongs_to :user
 
     def check_conflict
         conflicts = Event.where("start_time < ? AND end_time > ?", self.end_time, self.start_time).order("end_time ASC")
