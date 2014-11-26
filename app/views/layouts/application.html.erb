@@ -12,10 +12,15 @@
 </head>
 <body>
     <%= nav_bar :inverse => true, :fixed => :top, :responsive => true, :brand => "Smart Cal" do  %>
+        <ul class="nav navbar-nav navbar-text">
+            <% if user_signed_in? %>
+                <li><%= "Hello, " + current_user.name %></li>
+            <% end %>
+        </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
-                <% if user_signed_in? %>
-                        <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-                <% end %>
+            <% if user_signed_in? %>
+                <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
+            <% end %>
         </ul>
     <% end %>
     <div class="container-fluid">

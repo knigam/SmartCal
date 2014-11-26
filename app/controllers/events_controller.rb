@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @event = current_user.events.find(params[:id])
   end
 
   # GET /events/new
@@ -20,12 +21,13 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    @event = current_user.events.find(params[:id])
   end
 
   # POST /events
   # POST /events.json
   def create
-    @event = Event.new(event_params)
+    @event = current_user.events.build(event_params)
     @event.check_conflict
 
     respond_to do |format|
@@ -42,6 +44,7 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    @event = current_user.events.find(params[:id])
     @event.check_conflict
     respond_to do |format|
       if @event.update(event_params)
