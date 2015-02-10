@@ -16,8 +16,12 @@ ActiveRecord::Schema.define(version: 20141125224347) do
   create_table "events", force: true do |t|
     t.string   "title"
     t.text     "description"
+    t.text     "location"
     t.datetime "start_time"
     t.datetime "end_time"
+    t.time     "duration"
+    t.datetime "start_bound"
+    t.datetime "end_bound"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

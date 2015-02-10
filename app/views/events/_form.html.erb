@@ -20,12 +20,20 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :start_time %><br>
-    <%= f.datetime_select :start_time %>
+    <%= f.label :location%><br>
+    <%= f.text_area :location%>
+  </div> 
+  <div class="field">
+    <%= f.label :duration%><br>
+    <%= f.time_select :duration%>
   </div>
   <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
+    <%= f.label :start_bound%><br>
+    <%= f.datetime_select :start_bound%>
+  </div>
+  <div class="field">
+    <%= f.label :end_bound%><br>
+    <%= f.datetime_select :end_bound%>
   </div>
   <div class="actions">
     <%= f.submit %>

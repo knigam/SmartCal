@@ -28,7 +28,8 @@ class EventsController < ApplicationController
   # POST /events.json
   def create
     @event = current_user.events.build(event_params)
-    @event.check_conflict
+    @event.place
+    @event.conflict?
 
     respond_to do |format|
       if @event.save
@@ -45,9 +46,11 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1.json
   def update
     @event = current_user.events.find(params[:id])
-    @event.check_conflict
+    @event.assign_attributes(event_params)
+    @event.place
+    @event.conflict?
     respond_to do |format|
-      if @event.update(event_params)
+      if @event.save
         format.html { redirect_to @event, notice: 'Event was successfully updated.' }
         format.json { render :show, status: :ok, location: @event }
       else
@@ -75,6 +78,6 @@ class EventsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
-      params.require(:event).permit(:title, :description, :start_time, :end_time)
+        params.require(:event).permit(:title, :description, :location, :start_time, :end_time, :start_bound, :end_bound, :duration)
     end
 end
