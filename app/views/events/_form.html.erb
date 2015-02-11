@@ -36,7 +36,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="form-group">
                 <div class='input-group date' id='datetimepicker1'>
-                    <%= f.text_field :start_bound, :class => 'form-control'%>
+                    <%= f.text_field :start_bound, :class => 'form-control' %>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
                     </span>
                 </div>
@@ -44,7 +44,9 @@
         </div>
         <script type="text/javascript">
             $(function () {
-                $('#datetimepicker1').datetimepicker();
+                $('#datetimepicker1').datetimepicker({
+                    format: 'YYYY-MM-DD hh:mm A' 
+                });
             });
         </script>
     </div>
@@ -62,7 +64,9 @@
         </div>
         <script type="text/javascript">
             $(function () {
-                $('#datetimepicker2').datetimepicker();
+                $('#datetimepicker2').datetimepicker({
+                    format: 'YYYY-MM-DD hh:mm A' 
+                });
             });
         </script>
     </div>
