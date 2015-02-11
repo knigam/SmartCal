@@ -23,19 +23,60 @@
     <%= f.label :location%><br>
     <%= f.text_area :location%>
   </div> 
+
   <div class="field">
     <%= f.label :duration%><br>
-    <%= f.time_select :duration%>
+    <%= f.time_select :duration%> 
   </div>
-  <div class="field">
+
+<!--span class="glyphicon glyphicon-user"></span-->
+  <%= f.label :start_bound%><br>
+
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker1'>
+                    <%= f.text_field :start_bound, :class => 'form-control'%>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker1').datetimepicker();
+            });
+        </script>
+    </div>
+
+    <%= f.label :end_bound%><br>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker2'>
+                    <%= f.text_field :end_bound, :class => 'form-control'%>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(function () {
+                $('#datetimepicker2').datetimepicker();
+            });
+        </script>
+    </div>
+
+  <!-- <div class="field">
     <%= f.label :start_bound%><br>
     <%= f.datetime_select :start_bound%>
   </div>
   <div class="field">
     <%= f.label :end_bound%><br>
     <%= f.datetime_select :end_bound%>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </div> -->
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
 <% end %>
