@@ -43,3 +43,5 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 gem 'jquery-ui-themes'
 gem 'devise'
+gem 'momentjs-rails', '>= 2.8.1'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'

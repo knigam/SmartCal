@@ -17,3 +17,6 @@
 //= require_tree .
 //= require moment.min
 //= require fullcalendar
+//= require bootstrap-datepicker
+//= require moment
+//= require bootstrap-datetimepicker
