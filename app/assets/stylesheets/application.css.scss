@@ -15,7 +15,10 @@
  *= require fullcalendar
  *= require jquery-ui/smoothness
  *= require datepicker
-
+ *= require jquery.minicolors
+ *= require bootstrap-colorpicker
+ *= require bootstrap-timepicker
+ 
  // import bootstrap-sprockets before bootstrap if using bootstrap >= 3.2
 @import "bootstrap-sprockets";
 @import 'bootstrap';
@@ -29,8 +32,6 @@
     font-url('glyphicons-halflings-regular.ttf') format('truetype'), 
     font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
-
-
 
  */
 
