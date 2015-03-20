@@ -20,6 +20,9 @@
 //= require bootstrap-datepicker
 //= require moment
 //= require bootstrap-datetimepicker
+<<<<<<< HEAD
 //= require jquery.minicolors
 //= require bootstrap-colorpicker
 //= require bootstrap-timepicker
+=======
+>>>>>>> 8638f2305674cba09e80846a07e7fbdc71b35e54
