@@ -11,7 +11,6 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
-    @event = current_user.events.find(params[:id])
   end
 
   # GET /events/new
@@ -21,7 +20,6 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = current_user.events.find(params[:id])
   end
 
   # POST /events
@@ -45,7 +43,6 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
-    @event = current_user.events.find(params[:id])
     @event.assign_attributes(event_params)
     @event.place
     @event.conflict?
@@ -73,7 +70,7 @@ class EventsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
-      @event = Event.find(params[:id])
+      @event = current_user.events.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,0 +1,21 @@
+<h1>Friends</h1>
+<input type="text" class="autocomplete" name="add_friend" />
+<button type="button">Add Friend</button>
+
+<% User.all.each do |user| %>
+    <div class="user">
+        <p>
+            <%=user.name %>
+            <%= link_to "Add Friend", friendships_path(:friend_id => user), :method => :post %>
+            <div class="clear"></div>
+        </p>
+    </div>
+<% end %>
+<ul>
+    <% current_user.friends.each do |friend| %>
+        <li>
+            <%= friend.name %>
+            <%= link_to "Delete Friend", friendship_path(friend), :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+        </li>
+    <% end %>
+</ul>
