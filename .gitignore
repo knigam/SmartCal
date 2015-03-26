@@ -17,3 +17,7 @@
 
 # Ignore swp files from vim
 *.swp
+
+# Ignore files for Intellij
+/.idea
+*.iml
