@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325045948) do
+ActiveRecord::Schema.define(version: 20150329064157) do
 
   create_table "events", force: true do |t|
     t.string   "title"
@@ -22,7 +22,6 @@ ActiveRecord::Schema.define(version: 20150325045948) do
     t.time     "duration"
     t.datetime "start_bound"
     t.datetime "end_bound"
-    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,6 +31,15 @@ ActiveRecord::Schema.define(version: 20150325045948) do
     t.integer  "friend_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "invites", force: true do |t|
+    t.integer  "event_id"
+    t.integer  "user_id"
+    t.boolean  "creator",    default: false
+    t.boolean  "attending"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: true do |t|

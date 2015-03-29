@@ -25,12 +25,15 @@ class EventsController < ApplicationController
   # POST /events
   # POST /events.json
   def create
-    @event = current_user.events.build(event_params)
+    @event = Event.create(event_params)
     @event.place
     @event.conflict?
 
     respond_to do |format|
       if @event.save
+        invite = current_user.invites.build(creator: true)
+        invite.event = @event
+        invite.save
         format.html { redirect_to @event, notice: 'Event was successfully created.' }
         format.json { render :show, status: :created, location: @event }
       else
