@@ -32,8 +32,8 @@
 
 
   
-<%= f.input :color, as: :minicolors, input_html: {data: {
-          minicolors: {theme: :bootstrap, position: :right}}} %>
+<!--<%= f.input :color, as: :minicolors, input_html: {data: {
+          minicolors: {theme: :bootstrap, position: :right}}} %> -->
 
 
 
@@ -126,11 +126,12 @@ check the fullcalendar documentation and look under event rendering for more inf
     </div>
 
 <div class="field">
-<%= f.label 'Color'%><br>
-<input type="text" class="demo1" value="#5367ce" />
+<%= f.label :color %><br>
+<%= f.text_field :color, :class => 'colorpicker', :value=> '#5367ce' %>
+<!--input type="text" class="colorpicker" value="#5367ce" /-->
 <script>
 $(function(){
-    $('.demo1').colorpicker({inline :true});  
+    $('.colorpicker').colorpicker({inline :true});  
 });
 </script>
 </div>
