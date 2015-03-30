@@ -4,10 +4,10 @@ class FriendshipsController < ApplicationController
 
         if @friendship.save
             flash[:notice] = "Added friend."
-            redirect_to root_url
+            redirect_to friendships_path
         else
             flash[:notice] = "Unable to add friend."
-            redirect_to root_url
+            redirect_to friendships_path
         end
     end
 
@@ -18,6 +18,9 @@ class FriendshipsController < ApplicationController
           format.html { redirect_to friendships_url, notice: 'Friend was successfully deleted.' }
           format.json { head :no_content }
         end
-            
+    end
+
+    def search
+        @friends = User.where("email LIKE?", "%#{params[:email]}%")
     end
 end
