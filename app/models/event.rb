@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
-    belongs_to :user
+    has_many :invites
+    has_many :users, through: :invites
 
     #Places an event for the first time in a location that it does not cause any conflicts. Returns nil if cannot place without conflict
     def place

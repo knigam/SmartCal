@@ -1,0 +1,42 @@
+<h1>Friends</h1>
+<script>
+    function searchFriends() {
+        var email = document.getElementById("friend_search_bar").value;
+        $.getJSON( "friends/search.json?email="+email, function( data ) {
+            var friends = "";
+            $.each( data, function( key, val ) {
+                friends += "<p>id: " + val.id + " name: " + val.name + " email: " + val.email + "</p>";
+            });
+            document.getElementById("results").innerHTML = friends;
+        });
+    }
+</script>
+<div class="row">
+    <div class="span4">
+        <h3>Current Friends</h3>
+            <% current_user.friends.each do |friend| %>
+                <p>
+                    <%= friend.name %>
+                    <%= link_to "Delete Friend", friendship_path(friend), :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+                </p>
+            <% end %>
+    </div>
+
+    <div class="span4">
+        <h3>Search Users</h3>
+        Search: <input type="text" class="autocomplete" id="friend_search_bar">
+        <input type="button" value="Search" name="search" onclick="searchFriends()">
+
+        <div id="results">
+        </div>
+    </div>
+
+    <div class="span4">
+        <h3>Add Friends</h3>
+        <%= form_tag(friendships_path, method: "post") do %>
+            <%= label_tag(:friend_id, "Friend Id:") %>
+            <%= text_field_tag(:friend_id) %>
+            <%= submit_tag("Add Friend") %>
+        <% end %>
+    </div>
+</div>

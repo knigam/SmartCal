@@ -36,11 +36,24 @@
 </p>
 
 <br />
-<p>
-<strong>People Attending:</strong><br>
-  <input type="text" name="username"> 
-  <input type="submit" value="Add">
-</p>
+<script>
+    $(function() {
+        var friends = "#{ current_user.friends }";
+        $( "#friendsList" ).autocomplete({
+            source: friends
+        });
+    });
+</script>
+<strong>People added to event:</strong><br>
+<% for user in @event.users %>
+    <ul>
+        <li><%= user.name %></li>
+    </ul>
+<% end %>
+<div class="ui-widget">
+    <label for="friendsList">Users: </label>
+    <input id="friendsList">
+</div>
 
 <%= link_to 'Back', events_path %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |

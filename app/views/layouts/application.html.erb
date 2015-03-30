@@ -12,16 +12,17 @@
 </head>
 <body>
     <%= nav_bar :inverse => true, :fixed => :top, :responsive => true, :brand => "Smart Cal" do  %>
+        <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-text">
-            <% if user_signed_in? %>
-                <li><%= "Hello, " + current_user.name %></li>
-            <% end %>
+            <li><%= "Hello, " + current_user.name %></li>
+        </ul>
+        <ul class="nav navbar-nav">
+            <li><%= link_to "Friends", friendships_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
-            <% if user_signed_in? %>
-                <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
-            <% end %>
+            <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
         </ul>
+        <% end %>
     <% end %>
     <div class="container-fluid">
         <div class="row" style="padding-top: 60px">
