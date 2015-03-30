@@ -1,4 +1,4 @@
-<%= form_for(@event) do |f| %>
+<%= simple_form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -20,7 +21,7 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :location%><br>
+    <%= f.label :location %><br>
     <%= f.text_area :location%>
   </div> 
 
@@ -29,25 +30,20 @@
     <%= f.time_select :duration%> 
   </div>  
 
-<%= f.label 'Color'%><br>
+
+  
+<%= f.input :color, as: :minicolors, input_html: {data: {
+          minicolors: {theme: :bootstrap, position: :right}}} %>
 
 
-<input type="text" class="colorpicker1" value="#5367ce" />
-<script>
-$(function(){
-    $('.colorpicker1').colorpicker();
-});
-</script>
+
 
 <!-- Need to tie above color picker to the field type :color (that's a string ) to event
 and then run and then use the method eventColor once the event is updated
 
 check the fullcalendar documentation and look under event rendering for more information
---> 
-
-<br>
-
-
+-->
+ 
 <!-- <div class="input-append bootstrap-timepicker">
             <input id="timepicker" type="text" class="input-small">
             <span class="add-on"><i class="icon-time"></i></span>
@@ -129,7 +125,21 @@ check the fullcalendar documentation and look under event rendering for more inf
         </script>
     </div>
 
+<div class="field">
+<%= f.label 'Color'%><br>
+<input type="text" class="demo1" value="#5367ce" />
+<script>
+$(function(){
+    $('.demo1').colorpicker({inline :true});  
+});
+</script>
+</div>
+
+
     <div class="actions">
       <%= f.submit %>
     </div>
+
+
+
 <% end %>
