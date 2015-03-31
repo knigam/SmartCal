@@ -13,14 +13,16 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require turbolinks
-//= require_tree .
 //= require moment.min
 //= require fullcalendar
 //= require bootstrap-datepicker
 //= require moment
 //= require bootstrap-datetimepicker
+<<<<<<< HEAD
 //= require jquery.minicolors
 //= require jquery.minicolors.simple_form
 //= require bootstrap-colorpicker
 //= require bootstrap-timepicker
+=======
+//= require_tree .
+>>>>>>> develop

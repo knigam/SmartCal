@@ -1,4 +1,4 @@
-<%= form_for(@event) do |f| %>
+<%= simple_form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+
   <div class="field">
     <%= f.label :title %><br>
     <%= f.text_field :title %>
@@ -20,16 +21,69 @@
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :location%><br>
+    <%= f.label :location %><br>
     <%= f.text_area :location%>
   </div> 
 
   <div class="field">
     <%= f.label :duration%><br>
     <%= f.time_select :duration%> 
-  </div>
+  </div>  
+
+
+  
+<!--<%= f.input :color, as: :minicolors, input_html: {data: {
+          minicolors: {theme: :bootstrap, position: :right}}} %> -->
+
+
+
+
+<!-- Need to tie above color picker to the field type :color (that's a string ) to event
+and then run and then use the method eventColor once the event is updated
+
+check the fullcalendar documentation and look under event rendering for more information
+-->
+ 
+<!-- <div class="input-append bootstrap-timepicker">
+            <input id="timepicker" type="text" class="input-small">
+            <span class="add-on"><i class="icon-time"></i></span>
+        </div>
+ 
+        <script type="text/javascript">
+            $('#timepicker1').timepicker();
+        </script>
+
+
+<%= f.label :duration%><br>
+>>>>>>> 8638f2305674cba09e80846a07e7fbdc71b35e54
+ <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="form-group">
+                <div class='input-group date' id='timepicker1'>
+                    <%= f.text_field :duration, :class => 'form-control'%>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+         $(function () {
+          $('#timepicker1').timepicker();
+        });
+        </script>
+    </div>  
+    
+          $('#timepicker1').datetimepicker({
+            format: 'HH:mm'
+          });
+        });
+        </script>
+    </div> -->
 
 <!--span class="glyphicon glyphicon-user"></span-->
+
+
+
   <%= f.label :start_bound%><br>
 
     <div class="row">
@@ -77,8 +131,10 @@
 </div>
 
 
-
     <div class="actions">
       <%= f.submit %>
     </div>
+
+
+
 <% end %>
