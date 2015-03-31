@@ -3,7 +3,7 @@ class InvitesController < ApplicationController
     @event = current_user.events.find(params[:event_id])
     user = User.find_by_email(params[:email])
 
-    if Invite.create(event_id: @event.id, user_id: user.id, creator: false)
+    if user && Invite.create(event_id: @event.id, user_id: user.id, creator: false)
         flash[:notice] = "Added user to event."
       else
         flash[:notice] = "Unable to add user to event."
