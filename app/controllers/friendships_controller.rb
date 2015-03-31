@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
     def index
         params[:email] ||= ''
-        @friends = current_user.friends.where("email LIKE?", "%#{params[:email]}%")
+        @friends = current_user.friends.where("email ILIKE?", "%#{params[:email]}%")
     end
 
     def create
@@ -31,6 +31,6 @@ class FriendshipsController < ApplicationController
     end
 
     def search
-        @friends = User.where("email LIKE?", "%#{params[:email]}%")
+        @friends = User.where("email ILIKE?", "%#{params[:email]}%")
     end
 end
