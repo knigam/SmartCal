@@ -1,10 +1,12 @@
 class FriendshipsController < ApplicationController
+<<<<<<< HEAD
+=======
     def index
         params[:email] ||= ''
         @friends = current_user.friends.where("email LIKE?", "%#{params[:email]}%")
     end
-            user = User.find_by_email(params[:email])
 
+>>>>>>> develop
     def create
         if params[:friend_id]
             user = User.find(params[:friend_id])

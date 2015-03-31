@@ -51,7 +51,11 @@
     <%= form_tag(invites_path, method: "post") do %>
         <%= hidden_field_tag(:event_id, @event.id) %>
         <%= label_tag(:email, "User Email:") %>
+<<<<<<< HEAD
+        <%= text_field_tag(:email) %>
+=======
         <%= text_field_tag(:email, '', id: 'invite_user') %>
+>>>>>>> develop
         <%= submit_tag("Invite User") %>
     <% end %>
 <% end %>
