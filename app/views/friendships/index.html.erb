@@ -5,7 +5,7 @@
         $.getJSON( "friends/search.json?email="+email, function( data ) {
             var friends = "";
             $.each( data, function( key, val ) {
-                friends += "<p>id: " + val.id + " name: " + val.name + " email: " + val.email + "</p>";
+                friends += "<p>name: " + val.name + " email: " + val.email + "</p>";
             });
             document.getElementById("results").innerHTML = friends;
         });
@@ -34,8 +34,8 @@
     <div class="span4">
         <h3>Add Friends</h3>
         <%= form_tag(friendships_path, method: "post") do %>
-            <%= label_tag(:friend_id, "Friend Id:") %>
-            <%= text_field_tag(:friend_id) %>
+            <%= label_tag(:email, "Friend Email:") %>
+            <%= text_field_tag(:email) %>
             <%= submit_tag("Add Friend") %>
         <% end %>
     </div>
