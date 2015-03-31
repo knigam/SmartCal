@@ -1,14 +1,24 @@
 class FriendshipsController < ApplicationController
-    def create
-        @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+    def index
+        params[:email] ||= ''
+        @friends = current_user.friends.where("email LIKE?", "%#{params[:email]}%")
+    end
 
-        if @friendship.save
-            flash[:notice] = "Added friend."
-            redirect_to friendships_path
-        else
-            flash[:notice] = "Unable to add friend."
-            redirect_to friendships_path
+    def create
+        if params[:friend_id]
+            user = User.find(params[:friend_id])
+        elsif params[:email]
+            user = User.find_by_email(params[:email])
         end
+        if user
+            @friendship = current_user.friendships.build(:friend_id => user.id)
+            if @friendship.save
+                flash[:notice] = "Added friend."
+            else
+                flash[:notice] = "Unable to add friend."
+            end
+        end
+        redirect_to friendships_path
     end
 
     def destroy

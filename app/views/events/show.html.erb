@@ -36,24 +36,25 @@
 </p>
 
 <br />
-<script>
-    $(function() {
-        var friends = "#{ current_user.friends }";
-        $( "#friendsList" ).autocomplete({
-            source: friends
-        });
-    });
-</script>
+
 <strong>People added to event:</strong><br>
 <% for user in @event.users %>
-    <ul>
-        <li><%= user.name %></li>
-    </ul>
+    <p>
+        <%= user.name %>
+        <% if current_user.invites.find_by_event_id(@event.id).creator && user != current_user %>
+            <%= link_to 'Remove', invite_path(user.invites.find_by_event_id(@event.id)), :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+        <% end %>
+    </p>
 <% end %>
-<div class="ui-widget">
-    <label for="friendsList">Users: </label>
-    <input id="friendsList">
-</div>
+
+<% if current_user.invites.find_by_event_id(@event.id).creator %>
+    <%= form_tag(invites_path, method: "post") do %>
+        <%= hidden_field_tag(:event_id, @event.id) %>
+        <%= label_tag(:email, "User Email:") %>
+        <%= text_field_tag(:email, '', id: 'invite_user') %>
+        <%= submit_tag("Invite User") %>
+    <% end %>
+<% end %>
 
 <%= link_to 'Back', events_path %> |
 <%= link_to 'Edit', edit_event_path(@event) %> |

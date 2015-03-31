@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :events
   resources :friendships
+  resources :invites
 
   get 'friends/search' => 'friendships#search', as: :search_friends
 

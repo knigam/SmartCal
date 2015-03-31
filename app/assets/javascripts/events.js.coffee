@@ -2,3 +2,9 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $('.datepicker').datepicker()
+
+$ ->
+  $("#invite_user").autocomplete
+    serviceUrl: '/friendships.json',
+    minChars: 1,
+    paramName: 'email'
