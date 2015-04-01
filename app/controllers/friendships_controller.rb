@@ -3,7 +3,6 @@ class FriendshipsController < ApplicationController
         params[:email] ||= ''
         @friends = current_user.friends.where("email ILIKE?", "%#{params[:email]}%")
     end
-            user = User.find_by_email(params[:email])
 
     def create
         if params[:friend_id]
