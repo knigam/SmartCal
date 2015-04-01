@@ -50,6 +50,15 @@
             });
         </script>
     </div>
+    
+
+    <!--<div id="durationH">
+    <%= :duration.hour %>
+    </div>
+
+    <div id="durationMin">
+    <%= :duration.minute %>
+    </div>  This is me trying to get values of duration -->
 
     <%= f.label :end_bound%><br>
     <div class="row">
@@ -65,7 +74,7 @@
         <script type="text/javascript">
             /*var d = new Date($('datetimepicker1').getDate());
             var timeInMillis = d.getTime();
-            var defaultDate = new Date();--> */
+            var defaultDate = new Date(($('durationH')*3600+($'(durationMin)'*60)*1000) + timeInMillis);--> */
             $(function () {
                 $('#datetimepicker2').datetimepicker({
                     format: 'YYYY-MM-DD hh:mm A' 
