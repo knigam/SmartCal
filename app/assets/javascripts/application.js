@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require_tree .
 //= require moment.min
 //= require fullcalendar
 //= require bootstrap-datepicker
@@ -23,3 +22,4 @@
 //= require jquery.minicolors.simple_form
 //= require bootstrap-colorpicker
 //= require bootstrap-timepicker
+//= require_tree .
