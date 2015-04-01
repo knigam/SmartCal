@@ -1,15 +1,13 @@
 <h1>Friends</h1>
-<h3>Current Friends</h3>
-    <% current_user.friends.each do |friend| %>
-        <p>
-            <%= friend.name %>
-            <%= link_to "Delete Friend", friendship_path(friend), :method => :delete, :data => { :confirm => 'Are you sure?' } %>
-        </p>
-    <% end %>
-
-<h3>Add Friends</h3>
 <%= form_tag(friendships_path, method: "post") do %>
     <%= label_tag(:email, "Friend Email:") %>
     <%= text_field_tag(:email, '', id: 'email_search') %>
     <%= submit_tag("Add Friend") %>
+<% end %>
+<br/>
+<% current_user.friends.each do |friend| %>
+    <p>
+        <%= friend.name %>
+        <%= link_to "Delete Friend", friendship_path(friend), :method => :delete, :data => { :confirm => 'Are you sure?' } %>
+    </p>
 <% end %>

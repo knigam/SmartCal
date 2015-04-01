@@ -20,6 +20,9 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
+    if not current_user.invites.find_by_event_id(@event.id).creator
+      redirect_to @event, notice: 'You do not have permission to edit that event'
+    end
   end
 
   # POST /events
@@ -46,6 +49,9 @@ class EventsController < ApplicationController
   # PATCH/PUT /events/1
   # PATCH/PUT /events/1.json
   def update
+    if not current_user.invites.find_by_event_id(params[:id]).creator
+      redirect_to @event, notice: 'You do not have permission to edit that event'
+    end
     @event.assign_attributes(event_params)
     @event.place
     @event.conflict?
@@ -63,6 +69,9 @@ class EventsController < ApplicationController
   # DELETE /events/1
   # DELETE /events/1.json
   def destroy
+    if not current_user.invites.find_by_event_id(@event.id).creator
+      redirect_to @event, notice: 'You do not have permission to delete that event'
+    end
     @event.destroy
     respond_to do |format|
       format.html { redirect_to events_url, notice: 'Event was successfully destroyed.' }
