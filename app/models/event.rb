@@ -4,7 +4,7 @@ class Event < ActiveRecord::Base
 
     #Places an event for the first time in a location that it does not cause any conflicts. Returns nil if cannot place without conflict
     def place
-        conflicts = Event.where("start_time < ? AND end_time > ?", self.end_bound, self.start_bound).order("start_time ASC")
+        conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
         conflicts -= [self]
         if conflicts.empty?
             return move(self.start_bound)
@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
 
     # Returns true if there is an unavoidable conflict
     def conflict?
-        conflicts = Event.where("start_time < ? AND end_time > ?", self.end_time, self.start_time).order("end_time ASC")
+        conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
         conflicts -= [self]
         if conflicts.empty?
             return false
@@ -41,7 +41,7 @@ class Event < ActiveRecord::Base
     # places event in a location that no longer conflicts with other events if possible
     # returns true if conflict was resolved, false if not resolvable
     def resolve_conflict
-        conflicts = Event.where("start_time < ? AND end_time > ?", self.end_bound, self.start_bound).order("start_time ASC")
+        conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
         conflicts -= [self]
         # Sort the list of conflicts to pick the events which are more likely to be able to move without conflict
         sorted_conflicts = conflicts.sort{|a,b| (to_min(b.end_bound) - to_min(b.start_bound) - to_min(b.duration)) <=> (to_min(a.end_bound) - to_min(a.start_bound) - to_min(a.duration))}
@@ -140,7 +140,7 @@ class Event < ActiveRecord::Base
     # Checks to see if its possible to move to another location without collisions assuming addition of event e
     def move?(e)
         return false if self.static?
-        conflicts = Event.where("start_time < ? AND end_time > ?", self.end_bound, self.start_bound).order("start_time ASC")
+        conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
 
         if !conflicts.include?(e)
             conflicts << e
@@ -196,5 +196,9 @@ class Event < ActiveRecord::Base
         min += time.hour * 60
         min += time.min
         return min
+    end
+
+    def users_events
+        return self.users.map{|u| u.events}.flatten
     end
 end
