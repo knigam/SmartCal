@@ -1,9 +1,13 @@
 class Event < ActiveRecord::Base
-    has_many :invites
+    has_many :invites, dependent: :destroy
     has_many :users, through: :invites
 
     #Places an event for the first time in a location that it does not cause any conflicts. Returns nil if cannot place without conflict
     def place
+        if !self.start_time
+            self.move(self.start_bound)
+            self.save
+        end
         conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
         conflicts -= [self]
         if conflicts.empty?
@@ -34,13 +38,14 @@ class Event < ActiveRecord::Base
         if conflicts.empty?
             return false
         else
-            return (!self.resolve_conflict)
+            return (!self.resolve_conflict([self]))
         end
     end
 
     # places event in a location that no longer conflicts with other events if possible
     # returns true if conflict was resolved, false if not resolvable
-    def resolve_conflict
+    def resolve_conflict(closed = nil)
+        closed = [] if not closed
         conflicts = users_events.select{|e| e.start_time < self.end_bound && e.end_time > self.start_bound}.sort{|a,b| a.start_time <=> b.start_time}
         conflicts -= [self]
         # Sort the list of conflicts to pick the events which are more likely to be able to move without conflict
@@ -61,10 +66,12 @@ class Event < ActiveRecord::Base
                 c.save
                 return true
             else
-                if c.resolve_conflict
+                if !closed.include?(c) && c.resolve_conflict(closed)
                     self.move(self.start_bound)
                     self.save
                     return true
+                else
+                    closed << c
                 end
             end
             return false
@@ -90,10 +97,12 @@ class Event < ActiveRecord::Base
                         c.save
                         return true
                     else
-                        if c.resolve_conflict
+                        if !closed.includes?(c) && c.resolve_conflict
                             self.move(self.start_bound)
                             self.save
                             return true
+                        else
+                            closed << c
                         end
                     end
                 end
@@ -106,10 +115,12 @@ class Event < ActiveRecord::Base
                         c.save
                         return true
                     else
-                        if c.resolve_conflict
+                        if !closed.includes?(c) && c.resolve_conflict
                             self.move(self.start_bound)
                             self.save
                             return true
+                        else
+                            closed << c
                         end
                     end
                 end
@@ -124,10 +135,12 @@ class Event < ActiveRecord::Base
                     c.save
                     return true
                 else
-                    if c.resolve_conflict
+                    if !closed.includes?(c) && c.resolve_conflict
                         self.move(prev_c.end_time)
                         self.save
                         return true
+                    else
+                        closed << c
                     end
                 end
             end
