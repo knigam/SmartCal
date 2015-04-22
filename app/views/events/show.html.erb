@@ -17,22 +17,22 @@
 
 <p>
   <strong>Start bound:</strong>
-  <%= @event.start_bound %>
+  <%= @event.start_bound.to_s(:custom) %>
 </p>
 
 <p>
   <strong>Start time:</strong>
-  <%= @event.start_time %>
+  <%= @event.start_time.to_s(:custom) %>
 </p>
 
 <p>
   <strong>End time:</strong>
-  <%= @event.end_time %>
+  <%= @event.end_time.to_s(:custom) %>
 </p>
 
 <p>
   <strong>End bound:</strong>
-  <%= @event.end_bound %>
+  <%= @event.end_bound.to_s(:custom) %>
 </p>
 
 <br />
