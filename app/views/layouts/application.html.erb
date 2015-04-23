@@ -19,13 +19,16 @@
         <ul class="nav navbar-nav">
             <li><%= link_to "Friends", friendships_path %></li>
         </ul>
+        <ul class="nav navbar-nav">
+            <li><%= link_to "Home Page", homepage_path %></li>
+        </ul>
         <ul class="nav navbar-nav navbar-right pull-right">
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
         </ul>
         <% end %>
     <% end %>
     <div class="container-fluid">
-        <div class="row" style="padding-top: 60px">
+        <div class="row" style="padding-top: 0px">
                 <div class="span12" style="text-align: center"><%= yield %></div>
         </div>
     </div>

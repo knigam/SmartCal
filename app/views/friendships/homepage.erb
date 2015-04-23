@@ -1,0 +1,15 @@
+<section class="block">
+    
+     <div class="container-fluid">
+        <div class="row" style="padding-top: 50px">
+                <div class="span12" style="text-align: center"><%= yield %></div>
+        </div>
+    </div>
+
+ <div id="img_container">
+    <img src="assets/homepage.png">
+    <%= button_to "Sign Up Now", homepage_path, :id => "button",
+      :class => "button", :method => :get %>
+</div>
+</section>
+<!-- Carousel -->

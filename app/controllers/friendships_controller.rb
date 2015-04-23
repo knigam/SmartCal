@@ -33,4 +33,8 @@ class FriendshipsController < ApplicationController
     def search
         @friends = User.where("email ILIKE?", "%#{params[:email]}%")
     end
+   
+
+  def homepage
+  end
 end
