@@ -1,4 +1,4 @@
-**Smart Calendar Scheduling**
+# Smart Calendar Scheduling
 
 [https://teamrocket-smartcal.herokuapp.com/](https://teamrocket-smartcal.herokuapp.com/)
 
@@ -18,7 +18,7 @@ You will find that there really is more time in the day when you use our Smart C
 
 
 -----------------------------
-*Instructions*
+## Instructions
 
 - Visit our [Smart Calendar Scheduling](http://teamrocket-smartcal.herokuapp.com/ "Smart Calendar Scheduling Application") website
 - Sign up for a user account or log in with an existing one
@@ -30,7 +30,7 @@ You will find that there really is more time in the day when you use our Smart C
 - If the creation of an event results in a conflict, we will reschedule your prior events within their given time bounds if possible
 
 -----------------------------
-*Current Features*
+## Current Features
 
 Sprint 1
 
@@ -46,7 +46,7 @@ Sprint 2
 * Basic Group Event Scheduling
 
 -----------------------------
-*Future Features*
+## Future Features
 
 * Event Reminders and Notifications
 * Google Calendar Integration
@@ -55,7 +55,7 @@ Sprint 2
 
 
 -----------------------------
-*Acknowledgements*
+## Acknowledgements
 
 CS 3312 - Junior Design
 
