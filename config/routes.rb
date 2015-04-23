@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   get 'friends/search' => 'friendships#search', as: :search_friends
   get 'homepage' => 'friendships#homepage'
+  get 'about' => 'friendships#about'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

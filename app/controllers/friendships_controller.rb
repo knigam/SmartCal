@@ -37,4 +37,7 @@ class FriendshipsController < ApplicationController
 
   def homepage
   end
+
+  def about
+  end
 end

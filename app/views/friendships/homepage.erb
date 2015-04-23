@@ -1,4 +1,7 @@
 <section class="block">
+<style>
+form {display: inline-block;}
+</style>
     
      <div class="container-fluid">
         <div class="row" style="padding-top: 50px">
@@ -8,8 +11,14 @@
 
  <div id="img_container">
     <img src="assets/homepage.png">
-    <%= button_to "Sign Up Now", homepage_path, :id => "button",
-      :class => "button", :method => :get %>
+  
+</div>
+
+<div class="container">
+  <%= button_to "Learn More", homepage_path, :id => "learn",
+      :class => "homepagebutton", :method => :get %>
+  <%= button_to "Sign Up Now", homepage_path, :id => "signup",
+      :class => "homepagebutton", :method => :get %>
 </div>
 </section>
 <!-- Carousel -->
