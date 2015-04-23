@@ -1,0 +1,25 @@
+<section class="block">
+<style>
+form {display: inline-block;}
+</style>
+    
+     <div class="container-fluid">
+        <div class="row">
+                <div class="span12" style="text-align: center"><%= yield %></div>
+        </div>
+    </div>
+
+ <div id="img_container">
+    <img src="assets/homepage.png">
+  
+</div>
+
+<div class="container">
+  <%= button_to "Learn More", welcome_about_path, :id => "learn",
+      :class => "homepagebutton", :method => :get %>
+  <%= button_to "Sign Up Now", new_user_registration_path, :id => "signup",
+      :class => "homepagebutton", :method => :get %>
+</div>
+</section>
+<!-- Carousel -->
+

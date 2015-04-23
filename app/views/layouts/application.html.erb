@@ -22,10 +22,14 @@
         <ul class="nav navbar-nav navbar-right pull-right">
             <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
         </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right pull-right">
+            <li><%= link_to "Sign in", new_user_session_path %></li>
+        </ul>
         <% end %>
     <% end %>
     <div class="container-fluid">
-        <div class="row" style="padding-top: 60px">
+        <div class="row" style="padding-top: 50px">
                 <div class="span12" style="text-align: center"><%= yield %></div>
         </div>
     </div>
