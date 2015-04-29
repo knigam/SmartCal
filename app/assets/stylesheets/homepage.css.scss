@@ -1,6 +1,7 @@
+/* This is the stylesheet for the SmartCal homepage*/
+
 #img_container {
     position:relative;
-    display:inline-block;
     text-align:center;
 }
 
@@ -9,12 +10,12 @@
 max-width:100%; 
 max-height:100%;
 margin:auto;
-display:block;
 }
 
+/*homepage for the button*/
 .homepagebutton {
   position:relative;
-  bottom:450px;
+  bottom:350px;
   margin-right: 32px;
   text-shadow: 1px 1px 3px #666666;
   -webkit-box-shadow: 0px 1px 3px #666666;
@@ -27,6 +28,8 @@ display:block;
   border: solid #0fa3ff 1px;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  max-width:100%;
+  max-width:160px;
 }
 
 .homepagebutton:hover {
