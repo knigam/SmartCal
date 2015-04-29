@@ -1,3 +1,4 @@
+  <%# This is the form for creating a new event %>
 <%= simple_form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -30,6 +31,7 @@
     <%= f.time_select :duration, {minute_step:15, :default => {:hour => '1'} }%> 
   </div>  
 
+  <%# Start bound selector that uses a javascript date time picker%>
   <%= f.label :start_bound%><br>
 
     <div class="row">
@@ -52,7 +54,7 @@
     </div>
     
 
-
+  <%# End bound selector that uses a javascript date time picker%>
     <%= f.label :end_bound%><br>
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
@@ -76,6 +78,7 @@
         </script>
     </div>
 
+  <%# Uses built in ruby color picker to select color%>
 <div class="field">
 <%= f.label :color %><br>
 <%= f.color_field( :color) %>
