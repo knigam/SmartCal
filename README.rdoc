@@ -1,3 +1,0 @@
-== README
-
-SmartCal is a smart scheduling solution which attempts to automatically reorder events at convenient times. This project is under development for a Capstone project.
